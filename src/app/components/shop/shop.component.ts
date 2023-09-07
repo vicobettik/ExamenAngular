@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/store/cart.service';
 import { Product } from 'src/app/services/store/interfaces/product';
 import { ProductService } from 'src/app/services/store/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-shop',
@@ -30,9 +31,22 @@ export class ShopComponent implements OnInit{
     });
   }
 
-  public addProductToCart(id:number){
-    console.log("add prod")
-    this.cartService.addProduct(id);
+  public addProductToCart(product:Product){
+    const result = this.cartService.addProduct(product);
+    if (result) {
+      Swal.fire({
+        title:'Éxito',
+        text:'Producto agregado al carrito',
+        icon:'success'
+      });
+    }
+    else{
+      Swal.fire({
+        title:'Éxito',
+        text:'El producto ya esta en el carrito',
+        icon:'error'
+      });
+    }
   }
 
 }

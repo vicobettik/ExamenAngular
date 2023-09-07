@@ -24,10 +24,14 @@ export class CartService {
     this.cart.idUsuario =  this.userData?.id || 0;
    }
 
-  public addProduct(product:number){
-    console.log("carrito")
+  public addProduct(product:Product):boolean{
+    const productoExiste = this.cart.products.includes(product);
+    console.log(productoExiste)
+    if (productoExiste) {
+      return false;
+    }
     this.cart.products.push(product);
-    console.log(this.cart)
+    return true;
   }
 
 }

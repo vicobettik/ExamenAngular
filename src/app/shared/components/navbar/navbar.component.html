@@ -30,7 +30,7 @@
         </ul>
   
         <ul *ngIf="isLoged" class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-          <li><a class="nav-link" href="cart.html"><img src="./assets/images/cart.svg"></a></li>
+          <li><a class="nav-link button" routerLink="/cart"><img src="./assets/images/cart.svg"></a></li>
           <!-- <li *ngIf="isLoged"><a class="nav-link" href="#"><img src="./assets/images/user.svg"></a></li> -->
           <p class="text-white mt-3">Hola {{userData?.username!}}</p>
           

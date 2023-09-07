@@ -11,13 +11,15 @@ import { HomeComponent } from './components/home/home.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RouterModule } from '@angular/router';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ShopComponent,
-    LoginComponent
+    LoginComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

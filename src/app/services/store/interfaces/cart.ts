@@ -1,6 +1,6 @@
 import { Product } from "./product";
 
 export interface Cart{
-    products:number[];
+    products:Product[];
     idUsuario:number;
 }
