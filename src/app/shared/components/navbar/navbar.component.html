@@ -7,7 +7,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       
-      <div class="collapse navbar-collapse" id="navbarsFurni">
+      <div *ngIf="isLoged" class="collapse navbar-collapse" id="navbarsFurni">
         <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
           <li class="nav-item active">
             <a class="nav-link" href="index.html">Home</a>
@@ -32,21 +32,11 @@
         <ul *ngIf="isLoged" class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
           <li><a class="nav-link" href="cart.html"><img src="./assets/images/cart.svg"></a></li>
           <!-- <li *ngIf="isLoged"><a class="nav-link" href="#"><img src="./assets/images/user.svg"></a></li> -->
-          <p class="text-white">Hola {{userData?.username!}}</p>
+          <p class="text-white mt-3">Hola {{userData?.username!}}</p>
+          
+          <button (click)="logout()" class="btn ml-2">Cerrar sesión</button>
         </ul>
       </div>
     </div>
       
-  </nav>
-  <nav>
-    <a class=""
-       routerLink="/shop">
-      Crisis Center
-    </a> |
-    <a class="button"
-       routerLink="/heroes-list"
-       routerLinkActive="activebutton"
-       ariaCurrentWhenActive="page">
-      Heroes
-    </a>
   </nav>

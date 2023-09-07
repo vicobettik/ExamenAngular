@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LoginService } from '../../../services/auth/login.service';
 import { User } from 'src/app/services/auth/interfaces/user';
+import {Router} from "@angular/router"
 
 @Component({
   selector: 'shared-app-navbar',
@@ -12,7 +13,8 @@ export class NavbarComponent implements OnInit, OnDestroy{
   isLoged:boolean = false;
   userData?:User;
 
-  constructor(private loginService:LoginService){
+  constructor(private loginService:LoginService
+            , private router: Router){
     
   }
 
@@ -39,6 +41,12 @@ export class NavbarComponent implements OnInit, OnDestroy{
     console.log("destroy")
       this.loginService.currentUserData.unsubscribe();
       this.loginService.currentUserLoged.unsubscribe();
+      this.loginService.deleteLocalStorage();
+  }
+
+  logout(){
+    this.loginService.deleteLocalStorage();
+    this.router.navigate([''])
   }
 
 }

@@ -57,4 +57,11 @@ export class LoginService {
     return this.currentUserLoged.asObservable();
   }
 
+  deleteLocalStorage():void{
+    localStorage.removeItem('userData');
+    localStorage.removeItem('Loged');
+    this.currentUserLoged.next(false);
+    this.currentUserData.next({id:0, username:""});
+  }
+
 }
