@@ -4,6 +4,8 @@ import { Product } from './interfaces/product';
 import { LoginComponent } from '../../auth/login/login.component';
 import { LoginService } from '../auth/login.service';
 import { User } from '../auth/interfaces/user';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +13,10 @@ import { User } from '../auth/interfaces/user';
 export class CartService {
   cart:Cart = {idUsuario:0, products: []};
   userData?:User;
+  private url: string = 'https://localhost:7063/Cart';
 
-  constructor(private loginService:LoginService) {
+  constructor(private loginService:LoginService
+              ,private http:HttpClient) {
     this.loginService.userData.subscribe(
       {
         next:(userData) => {
@@ -32,6 +36,23 @@ export class CartService {
     }
     this.cart.products.push(product);
     return true;
+  }
+
+  public putOrder(cart: Cart){
+    return this.http.post<User>(this.url, cart)
+    .pipe(
+      catchError(this.handleError)
+      );
+  }
+
+  private handleError(error:HttpErrorResponse){
+    if (error.status === 0) {
+      console.error('Se ha producido un error', error.error);
+    }
+    else {
+      console.error('Backend retorno el codigo de estado', error.status, error.error);
+    }
+    return throwError(() => new Error('Algo fallo, por favor intente nuevamente.'));
   }
 
 }
