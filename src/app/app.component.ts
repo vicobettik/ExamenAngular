@@ -11,13 +11,13 @@ export class AppComponent {
 
   constructor(private loginService: LoginService) {}
 
-  @HostListener('window:unload', [ '$event' ])
-   beforeunloadhandler(event:void) {
-   this.loginService.deleteLocalStorage();
-   return false;   
-  }
-  unloadhandler(event:void) {
-    this.loginService.deleteLocalStorage();
+  // @HostListener('window:unload', [ '$event' ])
+  //  beforeunloadhandler(event:void) {
+  //  this.loginService.deleteLocalStorage();
+  //  return false;   
+  // }
+  // unloadhandler(event:void) {
+  //   this.loginService.deleteLocalStorage();
     
-  }
+  // }
 }
