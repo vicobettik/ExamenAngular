@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Cart } from './interfaces/cart';
+import { Cart, Order } from './interfaces/cart';
 import { Product } from './interfaces/product';
 import { LoginComponent } from '../../auth/login/login.component';
 import { LoginService } from '../auth/login.service';
 import { User } from '../auth/interfaces/user';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +40,13 @@ export class CartService {
 
   public putOrder(cart: Cart){
     return this.http.post<User>(this.url, cart)
+    .pipe(
+      catchError(this.handleError)
+      );
+  }
+
+  public getOrders():Observable<Order[]>{
+    return this.http.get<Order[]>(this.url)
     .pipe(
       catchError(this.handleError)
       );

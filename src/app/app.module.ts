@@ -12,6 +12,7 @@ import { ShopComponent } from './components/shop/shop.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from './components/cart/cart.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CartComponent } from './components/cart/cart.component';
     HomeComponent,
     ShopComponent,
     LoginComponent,
-    CartComponent
+    CartComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

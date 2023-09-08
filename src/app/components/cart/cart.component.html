@@ -3,7 +3,7 @@
         <div class="row justify-content-between">
             <div class="col-lg-5">
                 <div class="intro-excerpt">
-                    <h1>Cart</h1>
+                    <h1>Carrito</h1>
                 </div>
             </div>
             <div class="col-lg-7">
@@ -12,7 +12,6 @@
         </div>
     </div>
 </div>
-<!-- End Hero Section -->
 
 
 
@@ -70,7 +69,8 @@
             </div>
           </div>
 
-          <div class="row" *ngIf="NumProducts > 0">
+          <shared-app-spinner *ngIf="isLoading"></shared-app-spinner>
+          <div class="row" *ngIf="NumProducts > 0 && !isLoading" >
             <div class="col-md-12">
               <button class="btn btn-black btn-lg py-3 btn-block" (click)="putOrder()">Procesar orden</button>
             </div>

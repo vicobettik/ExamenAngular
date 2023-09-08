@@ -3,6 +3,7 @@ import { CartService } from 'src/app/services/store/cart.service';
 import { Cart } from 'src/app/services/store/interfaces/cart';
 import { Product } from '../../services/store/interfaces/product';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -10,8 +11,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit{
-  cart:Cart = {idUsuario:0, products:[]};
-  constructor(private cartService:CartService){
+  public cart:Cart = {idUsuario:0, products:[]};
+  public isLoading:boolean = false;
+
+
+  constructor(private cartService:CartService,
+            private router:Router){
 
   }
 
@@ -34,12 +39,15 @@ export class CartComponent implements OnInit{
   }
 
   public putOrder(){
+    this.isLoading = true;
     this.cartService.putOrder(this.cart)
       .subscribe({
         next:() => {
-          console.log("todo bien")
+          this.isLoading = false;
+          this.router.navigateByUrl('/orders');
         },
         error:(err) => {
+          this.isLoading = false;
           console.log(err)
         }
       })

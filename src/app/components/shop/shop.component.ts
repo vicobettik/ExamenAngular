@@ -42,7 +42,7 @@ export class ShopComponent implements OnInit{
     }
     else{
       Swal.fire({
-        title:'Éxito',
+        title:'Error',
         text:'El producto ya esta en el carrito',
         icon:'error'
       });

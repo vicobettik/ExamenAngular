@@ -1,0 +1,52 @@
+<div class="hero">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-5">
+                <div class="intro-excerpt">
+                    <h1>Ordenes</h1>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="untree_co-section before-footer-section">
+<div class="container">
+  <div class="row mb-5">
+    <form class="col-md-12" method="post">
+      <div class="site-blocks-table">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="product-name">Orden</th>
+              <th class="product-name">Articulos</th>
+              <th class="product-price">Total</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="orders">
+            <tr *ngFor="let order of orders">
+              <td class="product-name">
+                <h2 class="h5 text-black">{{order.id}}</h2>
+              </td>
+              <td>{{order.products.length}}</td>
+              <td>{{order.total | currency}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
+
+</div>
+</div>
+
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/tiny-slider.js"></script>
+<script src="js/custom.js"></script>
