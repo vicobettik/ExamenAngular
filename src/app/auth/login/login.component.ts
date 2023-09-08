@@ -12,8 +12,8 @@ import { LoginService } from 'src/app/services/auth/login.service';
 export class LoginComponent implements OnInit {
   loginError: string = "";
   loginForm = this.formBuilder.group({
-    email:['victor',[Validators.required]],
-    password:['victor', Validators.required],
+    email:['admin',[Validators.required]],
+    password:['admin', Validators.required],
   })
   constructor(private formBuilder:FormBuilder
     , private router:Router
